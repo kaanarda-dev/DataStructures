@@ -70,6 +70,32 @@ int search(struct Node *root, int data) {
 
 }
 
+int max(struct Node *root) {
+    if (root == NULL) {
+        return 0;
+    }
+
+    while (root->right != NULL) {
+        root = root->right;
+
+    }
+    return root->data;
+
+}
+
+int min(struct Node *root) {
+    if (root == NULL) {
+        return 0;
+    }
+
+    while (root->left != NULL) {
+        root = root->left;
+
+    }
+    return root->data;
+
+}
+
 
 int main() {
 
@@ -83,8 +109,13 @@ int main() {
     inorderTraversal(root);
 
     printf("\n");
+
     printf("%d\n", search(root, 5));
     printf("%d\n", search(root, 40));
     printf("%d\n", search(root, 200));
+
+    printf("%d\n", max(root));
+    printf("%d\n", min(root));
+
     return 0;
 }
