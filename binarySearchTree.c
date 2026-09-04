@@ -82,5 +82,9 @@ int main() {
     root = addNode(root, 40);
     inorderTraversal(root);
 
+    printf("\n");
+    printf("%d\n", search(root, 5));
+    printf("%d\n", search(root, 40));
+    printf("%d\n", search(root, 200));
     return 0;
 }
