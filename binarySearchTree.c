@@ -36,6 +36,16 @@ struct Node *addNode(struct Node* root, int data) {
 
 
 }
+void preOrderTraversal(struct Node *root) {
+
+    if (root == NULL) {
+        return;
+    }
+    printf("%d ",root->data);
+    preOrderTraversal(root->left);
+    preOrderTraversal(root->right);
+
+}
 
 void inorderTraversal(struct Node *root) {
 
@@ -48,6 +58,16 @@ void inorderTraversal(struct Node *root) {
 
 
 }
+
+void postOrderTraversal(struct Node *root) {
+    if (root == NULL) {
+        return;
+    }
+    postOrderTraversal(root->left);
+    postOrderTraversal(root->right);
+    printf("%d ",root->data);
+}
+
 
 int search(struct Node *root, int data) {
     if (root == NULL) {
@@ -96,6 +116,39 @@ int min(struct Node *root) {
 
 }
 
+struct Node *deleteNode(struct Node *root, int data) {
+
+    if (root == NULL) {
+        return NULL;
+    }
+
+    if (root->data == data) {
+
+        if (root->left == NULL && root->right == NULL) {
+            return NULL;
+        }
+
+        if (root->right != NULL) {
+            root -> data = min(root -> right);
+            root->right = deleteNode(root -> right, min(root->right));
+            return root;
+        }
+
+        root -> data = max(root -> left);
+        root -> left = deleteNode(root -> left, max(root -> left));
+        return root;
+
+    }
+    if (root->data < data) {
+        root->right = deleteNode(root->right, data);
+        return root;
+    }
+
+    root->left = deleteNode(root->left, data);
+    return root;
+
+
+}
 
 int main() {
 
@@ -106,6 +159,9 @@ int main() {
     root = addNode(root, 5);
     root = addNode(root, 3);
     root = addNode(root, 40);
+    root = addNode(root, 6);
+    root = addNode(root, 15);
+    root = addNode(root, 7);
     inorderTraversal(root);
 
     printf("\n");
@@ -116,6 +172,20 @@ int main() {
 
     printf("%d\n", max(root));
     printf("%d\n", min(root));
+
+    root = deleteNode(root, 10);
+    root = deleteNode(root, 5);
+    root = deleteNode(root, 40);
+    inorderTraversal(root);
+    printf("\n");
+
+
+    preOrderTraversal(root);
+    printf("\n");
+
+    postOrderTraversal(root);
+    printf("\n");
+
 
     return 0;
 }
