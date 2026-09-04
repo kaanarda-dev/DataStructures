@@ -10,16 +10,26 @@ The main goal of this repository is to improve my understanding of:
 - Data structure implementation
 - Algorithmic thinking
 
-## Current Topics
+### Binary Search Tree
 
-- Binary Search Tree
+The Binary Search Tree implementation currently includes:
 
-## Planned Topics
+- Node insertion
+- Node search
+- Node deletion
+- Finding minimum value
+- Finding maximum value
+- Inorder traversal
+- Preorder traversal
+- Postorder traversal
 
-- Linked List
-- Stack
-- Queue
-- Hash Table
+The project is separated into multiple files:
+
+BinarySearchTree/
+├── binarySearchTree.h
+├── binarySearchTree.c
+└── main.c
+
 
 ## Technologies
 
