@@ -49,6 +49,26 @@ void inorderTraversal(struct Node *root) {
 
 }
 
+int search(struct Node *root, int data) {
+    if (root == NULL) {
+        return -1;
+    }
+
+    if (root->data == data) {
+        return 1;
+    }
+
+    if (search(root->left, data) == 1) {
+        return 1;
+    }
+
+    if (search(root->right, data) == 1) {
+        return 1;
+    }
+
+    return -1;
+
+}
 
 
 int main() {
